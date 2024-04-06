@@ -8,25 +8,6 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div class="overlay" onclick="showInfo(false,'none')"></div>
-    <div class="modal">
-      <div class="modal-header">
-        <img src="./public/assets/home_FILL0_wght400_GRAD0_opsz24.svg" width="50" alt="#">
-        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, laborum.</h4>
-        <button style="margin-left: 20px;" onclick="showInfo(false,'none')"><img width="40" src="./public/assets/cancel_FILL0_wght400_GRAD0_opsz24.svg" alt="#"></button>
-      </div>
-      <div class="modal-body">
-        <h3>Topic Name</h3>
-        <div class="modal-body-content">
-          <div class="description">
-            Lorem ipsum dolor sit amet consectetur.
-          </div>
-          <div class="prize">
-            pierogi
-          </div>
-        </div>
-      </div>
-    </div>
     <div id="wrapper">
       <div class="app">
         <nav>
@@ -65,46 +46,27 @@
           </div>
         </div>
         <main>
-          <div class="main-info">
-            <div class="welcome">
-              Welcome to the main page! <br>You can do tasks, earn badges and points here.
-            </div>
-            <h3>Tasks to complete</h3>
-            <div class="tasks"> 
-              <div class="task" onclick="showInfo(false,'block')">
+          <div class="rankig">
+            <h2>Poland</h2>
+            <div class="tasks">
+              <div class="task">
                 <img src="./public/assets/corporate_fare_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="#">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz34.svg" width="40" alt="">
+                <h4>Rzeszow</h4>
               </div>
               <div class="task">
                 <img src="./public/assets/corporate_fare_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="#">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz34.svg" width="40" alt="">
+                <h4>Krakow.</h4>
               </div>
               <div class="task">
                 <img src="./public/assets/corporate_fare_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="#">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz34.svg" width="40" alt="">
+                <h4>Warsaw.</h4>
               </div>
             </div>
-          </div>
-          <div class="badges">
-            <h3 class="" >Monthly Badges</h3>
-            <div class="badge">
-              <img src="./public/assets/military_tech_FILL0_wght400_GRAD0_opsz24.svg" alt="#">
-              <h3>Lorem ipsum dolor sit.</h3>
-            </div>
-            <div class="badge">
-              <img src="./public/assets/military_tech_FILL0_wght400_GRAD0_opsz24.svg" alt="#">
-              <h3>Lorem ipsum dolor sit.</h3>
-            </div>
-        
-            
           </div>
         </main>
 
       </div>
     </div>
-    <script src="/main.js"></script>
+    <script type="module" src="/main.js"></script>
   </body>
 </html>

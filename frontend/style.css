@@ -110,6 +110,20 @@ main{
   justify-content: space-around;
   
 }
+.achievements{
+  align-items: baseline;
+  font-size: 20px;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+}
+.achieve-icon{
+  margin-left: auto;
+}
+.achieve-text{
+  margin-right: auto;
+}
 .task:hover{
   background: rgb(219, 219, 219);
 }
