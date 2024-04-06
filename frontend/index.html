@@ -8,6 +8,25 @@
     <title>Vite App</title>
   </head>
   <body>
+    <div class="overlay" onclick="showInfo(false,'none')"></div>
+    <div class="modal">
+      <div class="modal-header">
+        <img src="./public/assets/home_FILL0_wght400_GRAD0_opsz24.svg" width="50" alt="#">
+        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, laborum.</h4>
+        <button style="margin-left: 20px;" onclick="showInfo(false,'none')"><img width="40" src="./public/assets/cancel_FILL0_wght400_GRAD0_opsz24.svg" alt="#"></button>
+      </div>
+      <div class="modal-body">
+        <h3>Topic Name</h3>
+        <div class="modal-body-content">
+          <div class="description">
+            Lorem ipsum dolor sit amet consectetur.
+          </div>
+          <div class="prize">
+            pierogi
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="wrapper">
       <div class="app">
         <nav>
@@ -15,57 +34,69 @@
             Rzeszow            
           </div>
           <div class="points">
-            <img src="./public/assets/loyalty_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="">
-            <div class="number">200</div>
+            <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="">
+            <div class="number">300</div>
           </div>
+          <div class="auth">
+            Log in            
+          </div>
+          
           <div class="profile-picture">
-            <img src="./assets/1074014431711520534.svg" width="110" alt="#">
+            <img src="./public/assets/1074014431711520534.svg" width="110" alt="#">
           </div>
         </nav>
         <div class="sidebar">
           <div class="logo">LOGO</div>
-          <div class="sidebar-item">Profile</div>
-          <div class="sidebar-item">Rating</div>
-          <div class="sidebar-item">Cities</div>
+          <div class="sidebar-item active">
+              <img src="./public/assets/home_FILL0_wght400_GRAD0_opsz24.svg" width="36" alt="">
+             <div>Home</div>
+          </div>
+          <div class="sidebar-item">
+            <img src="./public/assets/account_circle_FILL0_wght400_GRAD0_opsz24.svg" width="36" alt="">
+             <div>Profile</div>
+          </div>
+          <div class="sidebar-item">
+            <img src="./public/assets/military_tech_FILL0_wght400_GRAD0_opsz24.svg" width="36" alt="">
+             <div>Rating</div>
+          </div>
+          <div class="sidebar-item">
+            <img src="./public/assets/location_on_FILL0_wght400_GRAD0_opsz24.svg" width="36" alt="">
+             <div>Cities</div>
+          </div>
         </div>
         <main>
           <div class="main-info">
             <div class="welcome">
               Welcome to the main page! <br>You can do tasks, earn badges and points here.
             </div>
-            <h2>Tasks to complete</h2>
-            <div class="tasks">
-              <div class="task">
+            <h3>Tasks to complete</h3>
+            <div class="tasks"> 
+              <div class="task" onclick="showInfo(false,'block')">
                 <img src="./public/assets/corporate_fare_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="#">
                 <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="">
+                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz34.svg" width="40" alt="">
               </div>
               <div class="task">
                 <img src="./public/assets/corporate_fare_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="#">
                 <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="">
+                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz34.svg" width="40" alt="">
               </div>
               <div class="task">
                 <img src="./public/assets/corporate_fare_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="#">
                 <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz24.svg" width="40"  alt="">
-              </div>
-              <div class="task">
-                <img src="./public/assets/corporate_fare_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="#">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="">
+                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz34.svg" width="40" alt="">
               </div>
             </div>
           </div>
           <div class="badges">
-            <h2 class="" >Monthly Badges</h3>
+            <h3 class="" >Monthly Badges</h3>
             <div class="badge">
               <img src="./public/assets/military_tech_FILL0_wght400_GRAD0_opsz24.svg" alt="#">
               <h3>Lorem ipsum dolor sit.</h3>
             </div>
             <div class="badge">
               <img src="./public/assets/military_tech_FILL0_wght400_GRAD0_opsz24.svg" alt="#">
-              <h3>Lorem ipsum dolor sit.</h3>  
+              <h3>Lorem ipsum dolor sit.</h3>
             </div>
         
             
@@ -74,6 +105,6 @@
 
       </div>
     </div>
-    <script type="module" src="/main.js"></script>
+    <script src="/main.js"></script>
   </body>
 </html>
