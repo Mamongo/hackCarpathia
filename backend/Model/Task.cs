@@ -12,6 +12,7 @@ public class Tasks{
     public string? Title{get;set;}
     public string? description{get;set;}
     public string? price{get;set;}
+    public DateTime createdat{get;set;}
 
 
 }

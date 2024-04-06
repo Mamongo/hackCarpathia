@@ -23,7 +23,8 @@ public class Tservice:ControllerBase{
             Title=task.Title,
             companyname=task.companyname,
             description=task.description,
-            price=task.price
+            price=task.price,
+            createdat=DateTime.UtcNow
         };
             
         var response = taskservice.MakeTask(obj);

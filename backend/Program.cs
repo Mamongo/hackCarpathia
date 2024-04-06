@@ -7,6 +7,7 @@ builder.Services.Configure<ConnectionStrings>(builder.Configuration.GetSection("
 
 builder.Services.AddControllers();
 builder.Services.AddScoped<Taskservice>();
+builder.Services.AddScoped<Userservice>();
 
 
 
