@@ -1,13 +1,23 @@
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Model;
 
-[ApiController]
-[Route("/[controller]")]
-public class AuthController:ControllerBase{
 
-    [HttpPost("/login")]
+
+[ApiController]
+
+public class Auth:ControllerBase{
+
+    [HttpPost("api/login")]
     public IActionResult login([FromBody] UserLoginRequest login){
+
+        return Ok("sucessful");
+    }
+
+     [HttpGet("api/home")]
+    public IActionResult home(){
 
         return Ok("sucessful");
     }
@@ -16,8 +26,12 @@ public class AuthController:ControllerBase{
 
     public IActionResult googlsingnin(){
 
-        return Ok("sucessful");
-        
+        var prop = new AuthenticationProperties{
+                RedirectUri="api/home"
+            };
+
+        return Challenge(prop,"Google");
+
     }
 
        

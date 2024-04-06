@@ -9,14 +9,24 @@ builder.Services.Configure<Googlekey>(builder.Configuration.GetSection("Googleke
 
 builder.Services.AddAuthentication("auth")
                 .AddCookie("auth")
-                .AddGoogle();
+                .AddGoogle("Google",opt =>
+                {
+
+                    opt.SignInScheme = "auth";
+                    var auth = builder.Configuration.GetSection("Googlekey").Get<Googlekey>();
+                    if (auth == null) return;
+                    opt.ClientId = auth.ClientId;
+                    opt.ClientSecret = auth.ClientSecret;
+                });
+builder.Services.AddAuthorization();
+
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-app.UseAuthentication();
+
 
 if (app.Environment.IsDevelopment())
 {
@@ -25,5 +35,10 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapControllers();
 
 app.Run();
