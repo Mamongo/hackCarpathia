@@ -10,10 +10,59 @@ using Model;
 
 public class Auth:ControllerBase{
 
+    public readonly Userservice taskservice;
+    public Auth(Userservice taskservice)
+    {
+       this.taskservice = taskservice;
+    }
+
     [HttpPost("api/login")]
     public IActionResult login([FromBody] UserLoginRequest login){
 
-        return Ok("sucessful");
+
+        var response = taskservice.login(login);
+
+        return Ok(response);
+
+    }
+
+     [HttpPut("api/addpoints")]
+    public IActionResult login(string userid,double points){
+
+
+        var response = taskservice.updatepoints(userid,points);
+
+        return Ok(response);
+
+    }
+
+    [HttpGet("api/ranking")]
+    public IActionResult ranking(){
+
+
+        var response = taskservice.Rankings();
+
+        return Ok(response);
+
+    }
+
+    [HttpPost("api/register")]
+    public IActionResult register([FromBody] PublicUser login){
+
+        var user = new privateUser{
+            userid = Guid.NewGuid().ToString(),
+            username=login.username,
+            email=login.email,
+            password=login.password,
+            cities=login.cities,
+            point=0,
+
+        };
+
+        var response = taskservice.register(user);
+
+        return Ok(response);
+
     }
 
      [HttpGet("api/home")]
