@@ -237,3 +237,9 @@ main{
 .google{
   height: 100px;
 }
+.close{
+  transition: 0.2s;
+}
+.close:hover{
+  transform: scale(1.1);
+}
