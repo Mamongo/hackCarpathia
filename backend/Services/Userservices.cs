@@ -91,6 +91,18 @@ public class Userservice
 
     }
 
+    public privateUser GetUserByUsername(string username)
+    {
+        var connect = mongoCollection<privateUser>(colloctionname);
+
+        var filter = Builders<privateUser>.Filter.Eq(u => u.username, username);
+
+        var user = connect.Find(filter).FirstOrDefault();
+
+        return user;
+    }
+
+
     public string cityRankings()
     {
 

@@ -18,6 +18,9 @@
     justify-content: center;
     align-items: center;
   }
+  .buttons{
+    display: flex;
+  }
   .login-window{
     box-shadow: 1px 1px 10px;
     display: flex;
@@ -28,7 +31,7 @@
     border-radius: 10%;
     background: rgba(255, 255, 255, 0.725);
     height: 460px;
-    width: 400px;
+    width: 500px;
   }
   .registration-window {
     box-shadow: 1px 1px 10px;

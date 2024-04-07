@@ -8,16 +8,18 @@ using Model;
 
 [ApiController]
 
-public class Auth:ControllerBase{
+public class Auth : ControllerBase
+{
 
     public readonly Userservice taskservice;
     public Auth(Userservice taskservice)
     {
-       this.taskservice = taskservice;
+        this.taskservice = taskservice;
     }
 
     [HttpPost("api/login")]
-    public IActionResult login([FromBody] UserLoginRequest login){
+    public IActionResult login([FromBody] UserLoginRequest login)
+    {
 
 
         var response = taskservice.login(login);
@@ -26,18 +28,20 @@ public class Auth:ControllerBase{
 
     }
 
-     [HttpPut("api/addpoints")]
-    public IActionResult login(string userid,double points){
+    [HttpPut("api/addpoints")]
+    public IActionResult login(string userid, double points)
+    {
 
 
-        var response = taskservice.updatepoints(userid,points);
+        var response = taskservice.updatepoints(userid, points);
 
         return Ok(response);
 
     }
 
     [HttpGet("api/ranking")]
-    public IActionResult ranking(){
+    public IActionResult ranking()
+    {
 
 
         var response = taskservice.Rankings();
@@ -46,16 +50,37 @@ public class Auth:ControllerBase{
 
     }
 
-    [HttpPost("api/register")]
-    public IActionResult register([FromBody] PublicUser login){
+    [HttpPost("api/profile")]
+    public IActionResult Profile([FromBody] string username)
+    {
+        if (string.IsNullOrEmpty(username))
+        {
+            return BadRequest("Username is required.");
+        }
 
-        var user = new privateUser{
+        var user = taskservice.GetUserByUsername(username);
+
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+
+        return Ok(user);
+    }
+
+
+    [HttpPost("api/register")]
+    public IActionResult register([FromBody] PublicUser login)
+    {
+
+        var user = new privateUser
+        {
             userid = Guid.NewGuid().ToString(),
-            username=login.username,
-            email=login.email,
-            password=login.password,
-            cities=login.cities,
-            point=0,
+            username = login.username,
+            email = login.email,
+            password = login.password,
+            cities = login.cities,
+            point = 0,
 
         };
 
@@ -65,24 +90,27 @@ public class Auth:ControllerBase{
 
     }
 
-     [HttpGet("api/home")]
-    public IActionResult home(){
+    [HttpGet("api/home")]
+    public IActionResult home()
+    {
 
         return Ok("sucessful");
     }
 
     [HttpGet("/googlelogin")]
 
-    public IActionResult googlsingnin(){
+    public IActionResult googlsingnin()
+    {
 
-        var prop = new AuthenticationProperties{
-                RedirectUri="api/home"
-            };
+        var prop = new AuthenticationProperties
+        {
+            RedirectUri = "api/home"
+        };
 
-        return Challenge(prop,"Google");
+        return Challenge(prop, "Google");
 
     }
 
-       
-  
+
+
 }

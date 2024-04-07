@@ -1,3 +1,4 @@
+localStorage.clear()
 const login = document.querySelector(".login-window");
 const toast = document.querySelector(".toast");
 let usernameInput = document.querySelector("#username");
@@ -28,7 +29,7 @@ login.addEventListener("submit",async function(event){
         switch (response.status) {
             case 500:
                 document.querySelector(".me-auto").textContent = "Error";
-                document.querySelector(".toast-body").textContent = data.split(" ").splice(0,2).join(" ");
+                document.querySelector(".toast-body").textContent = "Unsuccess";
                 toast.classList.toggle("show");
                 passInvalidAlert.textContent = "Oops something strange";
                 passwordInput.classList.add("is-invalid");
@@ -45,6 +46,7 @@ login.addEventListener("submit",async function(event){
                     toast.classList.toggle("show");
                     window.location.href = "http://localhost:5173";
                 },3000);
+                localStorage.setItem("user",JSON.stringify(username))
                 break;
             default:
                 break;

@@ -4,6 +4,10 @@ let sidebar = document.querySelector(".sidebar")
 let tasks = document.querySelector("#tasks")
 
 async function fetchTasks(){
+    if(!localStorage.getItem("user")){
+         window.location = "http://localhost:5173/login.html"
+    }
+
     let request = await fetch("http://localhost:5288/gettask",{
         method:"POST"
     })
@@ -16,8 +20,10 @@ async function fetchTasks(){
             <h4>${task.title}</h4>
             <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz34.svg" width="40" alt="">
         </div>`
-        
+        console.log(tasks)
+        if(window.location=="http://localhost:5173/index.html" || window.location=="http://localhost:5173/"){
         tasks.appendChild(taskToAdd)
+    }
     })
     localStorage.setItem("tasks",JSON.stringify(data))
 }
