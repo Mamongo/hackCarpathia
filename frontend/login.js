@@ -14,7 +14,7 @@ login.addEventListener("submit",async function(event){
     let username = document.querySelector("#username").value;
     let password = document.querySelector("#password").value;
     try{
-        let response = await fetch("http://localhost:3000/login/",{
+        let response = await fetch('http://localhost:5288/api/login',{
             method: "POST",
             headers: { 
                 "Content-Type": "application/json"
@@ -24,13 +24,13 @@ login.addEventListener("submit",async function(event){
                 password: password
             })
         })
-        let data = await response.json();
+        let data = await response;
         switch (response.status) {
-            case 400:
+            case 500:
                 document.querySelector(".me-auto").textContent = "Error";
                 document.querySelector(".toast-body").textContent = data.split(" ").splice(0,2).join(" ");
                 toast.classList.toggle("show");
-                passInvalidAlert.textContent = data;
+                passInvalidAlert.textContent = "Oops something strange";
                 passwordInput.classList.add("is-invalid");
                 passwordInput.value = "";
                 setTimeout(()=>{
@@ -38,21 +38,14 @@ login.addEventListener("submit",async function(event){
                 },3000)
                 break;
             case 200:
-                console.log(data)
                 document.querySelector(".me-auto").textContent = "Success";
                 document.querySelector(".toast-body").textContent = "Authorized successfully";
                 toast.classList.toggle("show");
                 setTimeout(async ()=>{
                     toast.classList.toggle("show");
-                    localStorage.setItem("authorization",data.authorization)
-                    window.location.href = "/app.html";
-                    console.log(data.authorization)
+                    window.location.href = "http://localhost:5173";
                 },3000);
                 break;
-            case 404:
-                userInvalidAlert.textContent = data;
-                usernameInput.classList.add("is-invalid");
-                usernameInput.value = "";
             default:
                 break;
         }

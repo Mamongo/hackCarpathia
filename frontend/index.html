@@ -12,24 +12,35 @@
     <div class="modal">
       <div class="modal-header">
         <img src="./public/assets/home_FILL0_wght400_GRAD0_opsz24.svg" width="50" alt="#">
-        <h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, laborum.</h4>
+        <h4 id="company-name">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, laborum.</h4>
         <button style="margin-left: 20px;" onclick="showInfo(false,'none')"><img width="40" src="./public/assets/cancel_FILL0_wght400_GRAD0_opsz24.svg" alt="#"></button>
       </div>
       <div class="modal-body">
-        <h3>Topic Name</h3>
+        <h3 id="task-name">Topic Name</h3>
         <div class="modal-body-content">
-          <div class="description">
+          <div class="task-description">
             Lorem ipsum dolor sit amet consectetur.
           </div>
-          <div class="prize">
+          <div class="task-prize">
             pierogi
           </div>
         </div>
+        <div class="prize">
+          <label><a href="uqpuqfix@sharklasers.com">Send Proof</a></label>
+      </div>
       </div>
     </div>
+          
     <div id="wrapper">
       <div class="app">
         <nav>
+          <div id="google_translate_element"></div>
+          <script type="text/javascript">function googleTranslateElementInit() { 
+            new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+          }
+          </script>
+
+          <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
           <div class="current-place">
             Rzeszow            
           </div>
@@ -70,35 +81,24 @@
               Welcome to the main page! <br>You can do tasks, earn badges and points here.
             </div>
             <h3>Tasks to complete</h3>
-            <div class="tasks"> 
-              <div class="task" onclick="showInfo(false,'block')">
-                <img src="./public/assets/corporate_fare_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="#">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz34.svg" width="40" alt="">
-              </div>
-              <div class="task">
-                <img src="./public/assets/corporate_fare_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="#">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz34.svg" width="40" alt="">
-              </div>
-              <div class="task">
-                <img src="./public/assets/corporate_fare_FILL0_wght400_GRAD0_opsz24.svg" width="40" alt="#">
-                <h4>Lorem ipsum dolor sit amet consectetur.</h4>
-                <img src="./public/assets/award_star_FILL0_wght400_GRAD0_opsz34.svg" width="40" alt="">
-              </div>
+            <div class="tasks" id="tasks"> 
+              
             </div>
           </div>
           <div class="badges">
             <h3 class="" >Monthly Badges</h3>
             <div class="badge">
               <img src="./public/assets/military_tech_FILL0_wght400_GRAD0_opsz24.svg" alt="#">
-              <h3>Lorem ipsum dolor sit.</h3>
+              <h3>Archangel Rzeszowa</h3>
             </div>
             <div class="badge">
               <img src="./public/assets/military_tech_FILL0_wght400_GRAD0_opsz24.svg" alt="#">
-              <h3>Lorem ipsum dolor sit.</h3>
+              <h3>Wall-E</h3>
             </div>
-        
+            <div class="badge">
+              <img src="./public/assets/military_tech_FILL0_wght400_GRAD0_opsz24.svg" alt="#">
+              <h3>Plastic destroyer</h3>
+            </div>
             
           </div>
         </main>

@@ -3,7 +3,7 @@ using MongoDB.Driver;
 
 namespace service;
 
-public class Taskservice 
+public class Taskservice
 {
 
     private readonly ConnectionStrings _connect;
@@ -18,22 +18,23 @@ public class Taskservice
 
 
     public IMongoCollection<T> mongoCollection<T>(in string collection)
-        {
-            var connect = new MongoClient(_connect.MongoDbConnectionString);
-            var db = connect.GetDatabase(database);
-            return db.GetCollection<T>(collection);
-
-        }
-
-    public List<Tasks> GetTasks()
     {
-       var connect = mongoCollection<Tasks>(colloctionname);
-
-       return connect.Find(x=>true).ToList();
+        var connect = new MongoClient("mongodb+srv://alnurmadiyev:td7FV5230wHdAwfv@hackaton.kgrkzyk.mongodb.net/?retryWrites=true&w=majority&appName=hackaton");
+        var db = connect.GetDatabase(database);
+        return db.GetCollection<T>(collection);
 
     }
 
-    public string MakeTask(Tasks task){
+    public List<Tasks> GetTasks()
+    {
+        var connect = mongoCollection<Tasks>(colloctionname);
+
+        return connect.Find(x => true).ToList();
+
+    }
+
+    public string MakeTask(Tasks task)
+    {
 
         var connect = mongoCollection<Tasks>(colloctionname);
 

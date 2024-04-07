@@ -12,54 +12,47 @@ document.querySelector(".registration-window").addEventListener("submit",async f
     event.preventDefault();
     let username = document.querySelector("#username").value;
     let password = document.querySelector("#password").value;
+    let email = document.querySelector("#email").value;
+    let city = document.querySelector("#address").value;
     if(password==document.querySelector("#repetition").value){
         try{
-            let response = await fetch("http://localhost:3000/registration/",{
+            let response = await fetch('http://localhost:5288/api/register',{
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
                     username: username,
-                    password: password
+                    password: password,
+                    email: email,
+                    cities: city
                 })
             })
-            let data = await response.json();
+            let data = await response;
+            console.log(data)
             switch (response.status) {
+                case 500:
+                    userInvalidAlert.textContent = data;
+                    usernameInput.classList.add("is-invalid");
+                    break;
                 case 404:
                     userInvalidAlert.textContent = data;
                     usernameInput.classList.add("is-invalid");
                     break;
-                case 400:
-                    document.querySelector(".me-auto").textContent = "Error";
-                    document.querySelector(".toast-body").textContent = data[0].msg;
-                    console.log(data)
-                    toast.classList.toggle("show");
-                    passInvalidAlert.textContent = data[0].msg;
-                    passwordInput.classList.add("is-invalid");
-                    passwordInput.value = "";
-                    setTimeout(()=>{
-                        toast.classList.toggle("show");
-                    },3000)
-                    break;
                 case 200:
-                    userInvalidAlert.textContent = data;
-                    usernameInput.classList.add("is-invalid");
-                    break;
-                case 201:
                     document.querySelector(".me-auto").textContent = "Success";
-                    document.querySelector(".toast-body").textContent = data.split(" ").splice(0,3).join(" ");
-                    toast.classList.toggle("show");
+                    document.querySelector(".toast-body").textContent = `Successfully registered`;
                     setTimeout(()=>{
-                        toast.classList.toggle("show");
-                        window.location.href = "/login"
+                    toast.classList.toggle("show");
+                    window.location.href = "http://localhost:5173/login.html"
                     },1500);
+                    break;
                 default:
                     break;
             }
         }catch(error){
-            console.log(error);
-        }
+            console.log(error)
+                    }
     }else{
         document.querySelector(".me-auto").textContent = "Error";
         document.querySelector(".toast-body").textContent = "Password doesn`t match with confirmation!"

@@ -13,32 +13,32 @@ builder.Services.AddScoped<Userservice>();
 
 builder.Services.Configure<Googlekey>(builder.Configuration.GetSection("Googlekey"));
 
-builder.Services.AddAuthentication("auth")
-                .AddCookie("auth")
-                .AddGoogle("Google",opt =>
-                {
+// builder.Services.AddAuthentication("auth")
+//                 .AddCookie("auth")
+//                 .AddGoogle("Google",opt =>
+//                 {
 
-                    opt.SignInScheme = "auth";
-                    var auth = builder.Configuration.GetSection("Googlekey").Get<Googlekey>();
-                    if (auth == null) return;
-                    opt.ClientId = auth.ClientId;
-                    opt.ClientSecret = auth.ClientSecret;
-
-
-                });
+//                     opt.SignInScheme = "auth";
+//                     var auth = builder.Configuration.GetSection("Googlekey").Get<Googlekey>();
+//                     if (auth == null) return;
+//                     opt.ClientId = auth.ClientId;
+//                     opt.ClientSecret = auth.ClientSecret;
 
 
-builder.Services.AddAuthorization();
+//                 });
+
+
+// builder.Services.AddAuthorization();
 
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-if(builder.Environment.IsDevelopment())
+if (builder.Environment.IsDevelopment())
 {
     builder.Services.AddCors(options =>
     {
-        
+
         options.AddDefaultPolicy(
             policy =>
             {
@@ -63,8 +63,8 @@ if (app.Environment.IsDevelopment())
 app.UseCors();
 app.UseHttpsRedirection();
 
-app.UseAuthentication();
-app.UseAuthorization();
+// app.UseAuthentication();
+// app.UseAuthorization();
 
 app.MapControllers();
 

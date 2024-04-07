@@ -12,56 +12,59 @@ public class Userservice
     {
         _connect = connect.Value;
     }
-    
 
-    
+
+
     string database = "User";
     private const string colloctionname = "Users";
 
 
     public IMongoCollection<T> mongoCollection<T>(in string collection)
-        {
-            var connect = new MongoClient(_connect.MongoDbConnectionString);
-            var db = connect.GetDatabase(database);
-            return db.GetCollection<T>(collection);
+    {
+        var connect = new MongoClient("mongodb+srv://alnurmadiyev:td7FV5230wHdAwfv@hackaton.kgrkzyk.mongodb.net/?retryWrites=true&w=majority&appName=hackaton");
+        var db = connect.GetDatabase(database);
+        return db.GetCollection<T>(collection);
 
-        }
+    }
 
 
-       public string login(UserLoginRequest login){
+    public string login(UserLoginRequest login)
+    {
 
         var connect = mongoCollection<privateUser>(colloctionname);
 
-        var usern=Builders<privateUser>.Filter.Eq(x=>x.username,login.Username);
-        var pass=Builders<privateUser>.Filter.Eq(x=>x.password,login.Password);
+        var usern = Builders<privateUser>.Filter.Eq(x => x.username, login.Username);
+        var pass = Builders<privateUser>.Filter.Eq(x => x.password, login.Password);
 
-        var filter = Builders<privateUser>.Filter.And(usern,pass);
+        var filter = Builders<privateUser>.Filter.And(usern, pass);
 
         //
         var exist = connect.Find(filter).FirstOrDefault();
 
-         if (exist != null)
+        if (exist != null)
         {
-       
-         return "success";
+
+            return "success";
         }
         else
         {
-        throw new Exception("username or password wrong");
+            throw new Exception("username or password wrong");
         }
 
-       }
+    }
 
-       
-       public string register(privateUser privateUser){
+
+    public string register(privateUser privateUser)
+    {
 
         var connect = mongoCollection<privateUser>(colloctionname);
 
         var exist = connect.Find(u => u.username == privateUser.username && u.password == privateUser.password).FirstOrDefault();
 
-        if(exist != null){
+        if (exist != null)
+        {
 
-         throw new Exception(" user already exist");
+            throw new Exception(" user already exist");
 
         };
 
@@ -69,15 +72,16 @@ public class Userservice
 
         return "success";
 
-       }
+    }
 
 
-       public List<Returnuser> Rankings(){
+    public List<Returnuser> Rankings()
+    {
 
         var connect = mongoCollection<privateUser>(colloctionname);
         var sort = Builders<privateUser>.Sort.Descending(u => u.point);
 
-        var response = connect.Find(x=>true).Sort(sort).Limit(15).ToList();
+        var response = connect.Find(x => true).Sort(sort).Limit(15).ToList();
 
         return response.Select(u => new Returnuser
         {
@@ -85,26 +89,28 @@ public class Userservice
             points = u.point
         }).ToList();
 
-       }
+    }
 
-       public string cityRankings(){
+    public string cityRankings()
+    {
 
         throw new NotImplementedException();
 
-       }
+    }
 
-       public string updatepoints(string userId, double pointsToAdd){
+    public string updatepoints(string userId, double pointsToAdd)
+    {
 
         var connect = mongoCollection<privateUser>(colloctionname);
-        
+
         var filter = Builders<privateUser>.Filter.Eq(u => u.userid, userId);
         var update = Builders<privateUser>.Update.Inc(u => u.point, pointsToAdd);
 
-        connect.UpdateOne(filter,update);
+        connect.UpdateOne(filter, update);
 
-         return "sucessful";
+        return "sucessful";
 
-       }
+    }
 
     //    public Dictionary<string, double> CityRankings()
     // {
